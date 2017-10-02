@@ -1,0 +1,20 @@
+{
+  "name": "wvu-workshop",
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/jblatt1/wvu-workshop",
+  "private": true,
+  "flat": true,
+  "scripts": {
+    "start": "webpack --config webpack.config.js"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
