@@ -17,6 +17,10 @@ public class TodoApplication extends Application<Configuration> {
 	public static void main(String[] args) throws Exception {
 		new TodoApplication().run(new String[] { "server", "src/main/resources/config.yaml" });
 	}
+	
+	public static void init() throws Exception{
+		new TodoApplication().run(new String[] { "server", "src/main/resources/config.yaml" });
+	}
 
 	@Override
 	public void run(Configuration configuration, Environment environment) throws Exception {
