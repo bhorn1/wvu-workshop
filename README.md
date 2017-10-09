@@ -6,3 +6,4 @@ gradle fatJar
 
 #Run
 java -jar build/libs/wvu-workshop-all.jar
+##
