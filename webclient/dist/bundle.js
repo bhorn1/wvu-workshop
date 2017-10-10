@@ -10991,12 +10991,45 @@ class TodoApp extends __WEBPACK_IMPORTED_MODULE_0__node_modules_polymer_polymer_
 
     static get template() {
         return html`
-           <dom-repeat items="[[todos]]">
-               <template>
-                   <todo-item todo="[[item]]" on-save-todo="_saveTodo" on-delete-todo="_deleteTodo"></todo-item>
-               </template>
-           </dom-repeat>
-           <todo-input on-create-todo="_createTodo"></todo-input>
+            <style>
+                :host {
+                    --primary-color: #33c485;
+                    --paper-checkbox-checked-color: #a1aba7;
+                    --paper-checkbox-label-checked-color: #a1aba7;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #33c485;
+                    color: #323735;
+                    overflow: hidden;
+                    font-family: 'PT Sans', sans-serif;
+                }
+                .todo-wrapper {
+                    background-color: white;
+                    width: 300px;
+                    margin: 50px auto 0 auto;
+                    min-height: 350px;
+                    max-height: 500px;
+                    overflow: auto;
+                    border-radius: 4px;
+                    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+                    padding: 25px;
+                }
+                h1 {
+                    margin: 0;
+                    padding: 10px 0 25px 0;
+                    text-align: center;
+                }
+            </style>
+            <div class="todo-wrapper">
+                <h1>Todo List</h1>
+                <dom-repeat items="[[todos]]">
+                   <template>
+                       <todo-item todo="[[item]]" on-save-todo="_saveTodo" on-delete-todo="_deleteTodo"></todo-item>
+                   </template>
+                </dom-repeat>
+                <todo-input on-create-todo="_createTodo"></todo-input>
+           </div>
         `;
     }
 
@@ -12178,14 +12211,22 @@ class TodoItem extends __WEBPACK_IMPORTED_MODULE_0__node_modules_polymer_polymer
             <style>
                 :host {
                     display: block;
-                    padding: 1rem;
+                    padding: 0 0 10px 0;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                    border-bottom: 1px solid #d9e5e0;
                     @apply(--layout-horizontal);
                     @apply(--layout-justified);
                     @apply(--layout-center);
                 }
+                paper-icon-button {
+                    padding: 0;
+                    width: 1.5em;
+                    height: 1.5em;
+                }
             </style>
             <paper-checkbox id="checkBox" on-checked-changed="_fire" checked="[[todo.completed]]">[[todo.title]]</paper-checkbox>
-            <paper-icon-button icon="delete" on-click="_delete"></paper-icon-button>
+            <paper-icon-button icon="remove-circle" on-click="_delete"></paper-icon-button>
         `;
     }
 
@@ -17523,6 +17564,18 @@ class TodoInput extends __WEBPACK_IMPORTED_MODULE_0__node_modules_polymer_polyme
                 :host {
                     @apply(--layout-horizontal);
                     @apply(--layout-center);
+                }
+                paper-button {
+                    --paper-button: {
+                        background-color: #33c485;
+                        color: white;
+                        font-weight: bold;
+                        padding: 5px;
+                        margin-left: 20px;
+                        border-radius: 4px;
+                        text-transform: none;
+                        font-family: 'PT Sans', sans-serif;
+                    }   
                 }
             </style>
             <paper-checkbox id="checkBox" checked="{{completed}}"></paper-checkbox>
